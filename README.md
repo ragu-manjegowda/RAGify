@@ -2,6 +2,10 @@
 
 This project aims to build a Retrieval-Augmented Generation (RAG) model for codebases written in C++ and Python. It focuses on providing efficient, minimalistic, and portable solutions for developers to explore and interact with their codebases.
 
+<p align="center"> <a href="./man/figures/RAGify.mp4" target="_blank"> High quality video of below GIF </a></p>
+
+<p align="center"> <img src="man/figures/RAGify.gif" alt="Click above link for video" width="900" height="350" /> </p>
+
 
 ## Motivation
 
@@ -84,7 +88,7 @@ make deactivate
 ```
 
 
-## Future Work
+## Possible Enhancements
 
 ### Web App
 Currently, this tool is a CLI application. However, it can easily be extended into a web application using simple wrappers like Streamlit or Flask.

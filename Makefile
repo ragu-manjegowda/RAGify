@@ -2,7 +2,7 @@
 
 activate:
 	python -m venv .venv
-	source .venv/bin/activate
+	@echo "Run 'source .venv/bin/activate' to activate the virtual environment"
 
 install:
 	pip install -r requirements.txt
