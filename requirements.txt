@@ -1,0 +1,17 @@
+httptools==0.6.4
+langchain-chroma==0.2.2
+langchain-community==0.3.17
+langchain-nvidia-ai-endpoints==0.3.9
+langchain-unstructured==0.1.6
+langgraph==0.2.73
+libmagic==1.0
+Markdown==3.7
+pip==25.0.1
+pynvim==0.5.2
+safetensors==0.5.2
+setuptools==75.6.0
+tree-sitter-languages==1.10.2
+unstructured==0.16.21
+uvloop==0.21.0
+watchfiles==1.0.4
+websockets==15.0

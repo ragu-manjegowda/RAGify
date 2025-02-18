@@ -1,8 +1,10 @@
 """Load specific file types using Langchain."""
 
-from langchain_community.document_loaders import UnstructuredMarkdownLoader
+from langchain_unstructured import UnstructuredLoader
 from langchain_community.document_loaders.generic import GenericLoader
 from langchain_community.document_loaders.parsers import LanguageParser
+from langchain_community.vectorstores.utils import filter_complex_metadata
+
 
 import os
 import glob
@@ -37,15 +39,14 @@ def load_md_files():
                              recursive=True)
 
         # Initialize the loader for Markdown files
-        md_loader = UnstructuredMarkdownLoader(
-            md_files,
-            mode="elements",
-            strategy="fast",
-        )
+        md_loader = UnstructuredLoader(md_files)
 
         md_docs = md_loader.load()
     except Exception as e:
         print(f'Error in load_md_files {str(e)}')
+
+    if md_docs:
+        md_docs = filter_complex_metadata(md_docs)
 
     return md_docs
 

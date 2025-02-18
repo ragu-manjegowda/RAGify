@@ -1,6 +1,7 @@
 """Generate various llm clients using Langchain."""
 
 from langchain_chroma import Chroma
+from chromadb.config import Settings
 from langchain_nvidia_ai_endpoints import (
     ChatNVIDIA,
     NVIDIAEmbeddings
@@ -52,7 +53,8 @@ class vector_store_client:
 
                 vectorStore = Chroma(
                     embedding_function=embeddings,
-                    persist_directory=VECTOR_STORE_PATH
+                    persist_directory=VECTOR_STORE_PATH,
+                    client_settings=Settings(anonymized_telemetry=False)
                 )
 
             except Exception as e:

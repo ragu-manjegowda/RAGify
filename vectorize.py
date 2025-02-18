@@ -22,16 +22,16 @@ from llms import (
 def load_and_split_files():
     """Load and split files."""
     splits = []
-    for enum, file_type in enumerate(VECTORIZE_FILE_TYPES):
-        if enum == 0:
+    for file_type in VECTORIZE_FILE_TYPES:
+        if file_type == "cpp":
             docs = load_cpp_files()
             print(f"Loaded {len(docs)} documents of type {file_type}.")
             splits.extend(split_cpp_files(docs))
-        elif enum == 1:
+        elif file_type == "md":
             docs = load_md_files()
             print(f"Loaded {len(docs)} documents of type {file_type}.")
             splits.extend(split_md_files(docs))
-        else:
+        elif file_type == "py":
             docs = load_python_files()
             print(f"Loaded {len(docs)} documents of type {file_type}.")
             splits.extend(split_python_files(docs))
