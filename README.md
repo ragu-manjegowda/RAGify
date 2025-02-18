@@ -23,11 +23,6 @@ exploration tool.
 information to users without them having to manually provide the context
 to the model.
 
-## Optimization
-* This has be optimized to use hybrid approach to retrieve the context. Instead
-of sending just the embeddings to the model, it retrieves the original file
-content based on the similarity result and shares that with the model.
-
 ## Installation
 
 >[!WARNING] Do not use python 3.13 as tree-sitter is broken in that version.
@@ -45,10 +40,35 @@ Checkout `env.py` for configuration options.
 >[!NOTE] This only works with NVIDIA endpoints, for endpoint other than
 NVIDIA, modify the client instantiation in `llm.py` as needed.
 
+>[!NOTE] Turn VECTORIZE_CODEBASE to False after first run.
+
 ```bash
 python3 main.py
 ```
 
+## Makefile
+
+Installation and usage can be done using makefile.
+
+```bash
+make activate # to activate the virtual environment
+make install # to install the requirements
+make run # to run the model
+make clean # to remove pycache and vector store
+make deactivate # to deactivate the virtual environment
+```
+
 ## Future Work
-Currently this is a CLI tool, however it can be easily extended to a web app
+
+### Web App
+* Currently this is a CLI tool, however it can be easily extended to a web app
 by adding a simple wrapper like streamlit.
+
+### Optimization
+* This can be further optimized to use hybrid approach to retrieve the
+context. Instead of sending just the embeddings to the model, it retrieves
+the original file content based on the similarity result and shares that
+with the model.
+
+### Memory
+* Add support to store chat history in memory and restore it on next run.

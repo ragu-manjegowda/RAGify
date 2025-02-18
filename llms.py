@@ -9,7 +9,11 @@ from langchain_nvidia_ai_endpoints import (
 
 import os
 
-from env import VECTOR_STORE_PATH
+from env import (
+    EMBED_MODEL,
+    LLM_MODEL,
+    VECTOR_STORE_PATH
+)
 
 llm_client = None
 tokenizer = None
@@ -22,13 +26,11 @@ def create_or_get_llm_client():
     if llm_client is None:
         try:
             llm_client = ChatNVIDIA(
-                # model="nvdev/qwen/qwen2.5-coder-32b-instruct",
-                model="nvdev/meta/llama-3.3-70b-instruct",
-                # model="nvdev/deepseek-ai/deepseek-r1",
+                model=LLM_MODEL,
                 api_key=os.environ["OPENAI_API_KEY"],
                 temperature=0.6,
                 top_p=0.7,
-                max_tokens=4096,
+                max_tokens=32768
             )
         except Exception as e:
             print(f'Error in create_or_get_llm {str(e)}')
@@ -46,7 +48,7 @@ class vector_store_client:
             try:
                 # Initialize the embeddings
                 embeddings = NVIDIAEmbeddings(
-                    model="nvdev/nvidia/llama-3.2-nv-embedqa-1b-v2",
+                    model=EMBED_MODEL,
                     api_key=os.environ["OPENAI_API_KEY"],
                     truncate="NONE",
                 )
