@@ -14,4 +14,4 @@ clean:
 	rm -rf __pycache__ .vector_store
 
 deactivate:
-	deactivate
+	@echo "Run 'deactivate' to deactivate the virtual environment"

@@ -43,7 +43,7 @@ To install the required dependencies, follow these steps:
 
 ```sh
 # Create a virtual environment
-python3 -m venv .venv
+python3.9 -m venv .venv
 
 # Activate the virtual environment
 source .venv/bin/activate
